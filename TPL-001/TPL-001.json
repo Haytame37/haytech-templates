@@ -1,0 +1,174 @@
+{
+  "name": "TPL-001",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4b52cae9-0963-4370-98e5-a76b4827e24e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "493273f2-14fc-42dc-a164-86488b69294b",
+              "name": "stockOnHand",
+              "value": 100,
+              "type": "number"
+            },
+            {
+              "id": "4b4acf4c-8cb1-45f7-8e18-c7ab16cc14a5",
+              "name": "stockReserved",
+              "value": 95,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7ba47678-1678-4419-a909-9a7d74be24cb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  item.json.stockDisponible = item.json.stockOnHand - item.json.stockReserved;\n  item.json.isLowStock = item.json.stockDisponible < 10;\n}\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "3ae0efb6-672c-48d6-8f3b-9ae6a71175ec",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "28aa3d68-b241-4ae3-b5c5-526530f0b3a8",
+              "leftValue": "={{ $json.isLowStock }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        624,
+        0
+      ],
+      "id": "4f3c11f7-bf9c-4eb6-a475-dfabcb18b15f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fromEmail": "haytame.agent@gmail.com",
+        "toEmail": "haytameelatraoui@gmail.com",
+        "html": "=Alerte Stock Bas : Il ne reste que {{ $json.stockDisponible }} unités !",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        832,
+        -96
+      ],
+      "id": "ac5a733c-bd5d-439e-bcd0-3da2c11c00bb",
+      "name": "Send an Email",
+      "webhookId": "9b5d8008-ae8e-4d13-867f-eb428639ac7b",
+      "credentials": {
+        "smtp": {
+          "id": "g4xofxFSSAieghcK",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "743e3ed5-ef7f-446a-be70-dde3195f9753",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "89146078b3b6761792db67c93303fcff13204751f9141d16d909470ec110b986"
+  },
+  "id": "dfdcwE8be7z4jZ5E",
+  "tags": []
+}
