@@ -8,7 +8,7 @@
 Welcome to the official repository of HayTech templates. We provide robust n8n workflows designed to bridge the gap between industrial hardware and digital intelligence.
 
 ## 📂 Available Templates
-*   **[TPL-001] : Real-time inventory monitoring with automated email alerts.
+*   **[TPL-001]** : Real-time inventory monitoring with automated email alerts.
 
 ---
 
