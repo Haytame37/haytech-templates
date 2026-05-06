@@ -1,16 +1,14 @@
-# 📦 [TPL-001] OptiStock Core
-**Automated Stock Monitoring & Alert System**
+# 📦 TPL-001 : 
+**Système de Monitoring de Stock Industriel intelligent pour n8n.**
 
-### 🎯 Overview
-This workflow prevents production downtime by calculating real-time available stock and sending instant email notifications when inventory hits a critical threshold.
+## 🎯 Description
+Ce template permet de surveiller en temps réel l'écart entre le stock physique et les réservations, déclenchant une alerte mail immédiate en cas de franchissement de seuil critique.
 
-### ⚙️ Logic breakdown
-1.  **Input**: Receives `stockOnHand` and `stockReserved`.
-2.  **Calculation**: Computes `stockDisponible = stockOnHand - stockReserved` via JavaScript.
-3.  **Condition**: Triggers an alert if `stockDisponible` is low.
-4.  **Action**: Sends a professional email alert.
+## 🛠️ Configuration
+1. **Importation** : Glissez le fichier `TPL-001.json` dans votre interface n8n.
+2. **Identifiants** : Connectez votre compte SMTP ou Gmail dans le nœud "Notification Alerte Stock".
+3. **Seuils** : Ajustez la variable `lowStockThreshold` dans le nœud "Vérification Seuil Critique" (par défaut à 10).
 
-### 🚀 How to use
-1.  Import the `TPL-001.json` file into your n8n instance.
-2.  Configure your Gmail/SMTP credentials in the "Send an Email" node.
-3.  Adjust the threshold in the "If" node to match your industrial needs.
+## 🚀 Fonctionnalités Avancées
+* **Calcul Automatisé** : Logique JavaScript optimisée pour la précision des données.
+* **Gestion des Erreurs** : Architecture compatible avec le `HAYTECH-ERROR-HANDLER` pour une surveillance 24h/24.
