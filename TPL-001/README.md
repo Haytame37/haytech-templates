@@ -1,14 +1,10 @@
-# 📦 TPL-001 : 
-**Système de Monitoring de Stock Industriel intelligent pour n8n.**
+# 📨 TPL-001 : HayTech Support Form
+**Système de capture de tickets de support client via n8n.**
 
 ## 🎯 Description
-Ce template permet de surveiller en temps réel l'écart entre le stock physique et les réservations, déclenchant une alerte mail immédiate en cas de franchissement de seuil critique.
+Ce template génère un formulaire natif n8n ("Support HayTech") permettant à vos utilisateurs de poser leurs questions et vous transmet instantanément les requêtes par email.
 
 ## 🛠️ Configuration
-1. **Importation** : Glissez le fichier `TPL-001.json` dans votre interface n8n.
-2. **Identifiants** : Connectez votre compte SMTP ou Gmail dans le nœud "Notification Alerte Stock".
-3. **Seuils** : Ajustez la variable `lowStockThreshold` dans le nœud "Vérification Seuil Critique" (par défaut à 10).
-
-## 🚀 Fonctionnalités Avancées
-* **Calcul Automatisé** : Logique JavaScript optimisée pour la précision des données.
-* **Gestion des Erreurs** : Architecture compatible avec le `HAYTECH-ERROR-HANDLER` pour une surveillance 24h/24.
+1. **Importation** : Glissez le fichier `TPL-001.json` dans n8n.
+2. **Formulaire** : Activez le nœud "On form submission" pour générer l'URL de votre formulaire.
+3. **Email** : Configurez vos identifiants SMTP dans le nœud "Send an Email" et ajustez l'adresse de réception (`toEmail`).
