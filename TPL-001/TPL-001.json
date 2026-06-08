@@ -90,8 +90,8 @@
     },
     {
       "parameters": {
-        "fromEmail": "haytame.agent@gmail.com",
-        "toEmail": "haytameelatraoui@gmail.com",
+        "fromEmail": "votre.email@domaine.com",
+        "toEmail": "client.reception@domaine.com",
         "html": "=Alerte Stock Bas : Il ne reste que {{ $json.stockDisponible }} unités !",
         "options": {}
       },
@@ -103,10 +103,9 @@
       ],
       "id": "ac5a733c-bd5d-439e-bcd0-3da2c11c00bb",
       "name": "Send an Email",
-      "webhookId": "9b5d8008-ae8e-4d13-867f-eb428639ac7b",
       "credentials": {
         "smtp": {
-          "id": "g4xofxFSSAieghcK",
+          "id": "",
           "name": "SMTP account"
         }
       }
@@ -164,11 +163,10 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "743e3ed5-ef7f-446a-be70-dde3195f9753",
+  "versionId": null,
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "89146078b3b6761792db67c93303fcff13204751f9141d16d909470ec110b986"
+    "templateCredsSetupCompleted": true
   },
-  "id": "dfdcwE8be7z4jZ5E",
+  "id": null,
   "tags": []
 }
